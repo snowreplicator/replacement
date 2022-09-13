@@ -1,0 +1,12 @@
+Bundle-Name: replacement-api
+Bundle-SymbolicName: com.snowreplicator.replacement.api
+Bundle-Version: 1.0.0
+Export-Package: \
+    com.snowreplicator.replacement.constants, \
+    com.snowreplicator.replacement.exception, \
+    com.snowreplicator.replacement.model, \
+    com.snowreplicator.replacement.service, \
+    com.snowreplicator.replacement.util
+
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../replacement-service/service.xml

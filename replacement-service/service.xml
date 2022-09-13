@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.4.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_4_0.dtd">
+
+<service-builder dependency-injector="ds" package-path="com.snowreplicator.replacement">
+    <namespace>rpl</namespace>
+
+    <!-- замещение -->
+    <entity name="Replacement" table="snowrepl.rpl_Replacement" local-service="true" remote-service="true">
+        <column name="id" primary="true" type="long" />
+        
+        <column name="groupId"    type="long" />    <!-- id сайта -->
+        <column name="mainUserId" type="long" />    <!-- id пользователя -->
+        <column name="replUserId" type="long" />    <!-- id замещающего пользователя -->
+        <column name="dateStart"  type="Date"   />  <!-- дата начала замещения -->
+        <column name="dateEnd"    type="Date"   />  <!-- дата окончания замещения -->
+
+        <finder name="Group" return-type="Collection">
+            <finder-column name="groupId"/>
+        </finder>
+        
+        <finder name="GroupMainUser" return-type="Collection">
+            <finder-column name="groupId"/>
+            <finder-column name="mainUserId"/>
+        </finder>
+        
+        <finder name="GroupReplUser" return-type="Collection">
+            <finder-column name="groupId"/>
+            <finder-column name="replUserId"/>
+        </finder>
+        
+        
+        <finder name="GroupMainUserReplUser" return-type="Collection">
+            <finder-column name="groupId" />
+            <finder-column name="mainUserId" />
+            <finder-column name="replUserId" />
+        </finder>
+    </entity>
+    
+    <exceptions>
+        <exception>ReplacementNoPeriod</exception>
+    </exceptions>
+
+</service-builder>

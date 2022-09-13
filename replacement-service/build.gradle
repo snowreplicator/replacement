@@ -1,0 +1,14 @@
+apply plugin: 'java'
+compileJava {
+    options.encoding = "UTF-8"
+}
+
+dependencies {
+    compileOnly group: "com.liferay.portal", name: "release.portal.api"
+
+    compileOnly project(":modules:replacement:replacement-api")
+}
+
+buildService {
+    apiDir = "../replacement-api/src/main/java"
+}
